@@ -1,0 +1,142 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Tapjoy Cordova/Phonegap Plugin</title>
+<script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+<script type="text/javascript" charset="utf-8" src="tapjoy.js"></script>
+
+<script type="text/javascript" charset="utf-8">
+	document.addEventListener('deviceready', function() {	    
+	    var tapjoy;
+		tapjoy = new Tapjoy();
+	    
+		var connect = document.getElementById("tapjoy-connect");
+		connect.onclick = function() {
+			////////////////////////////////////////////////////////////////////////////////
+			// REPLACE WITH YOUR OWN APP-ID AND SECRET KEY
+			////////////////////////////////////////////////////////////////////////////////
+
+			if(device.platform == "Android"){ // ANDROID
+				tapjoy.requestTapjoyConnect("bba49f11-b87f-4c0f-9632-21aa810dd6f1", "yiQIURFEeKm0zbOggubu", function(r){printResult("Connect: " + r)}, function(r){printResult("Connect" + r)});
+			}
+			else{ //iOS
+			    // set up connect options
+	            var flags = {};
+	            flags["TJC_OPTION_ENABLE_LOGGING"] = "YES";
+	            flags["TJC_OPTION_COLLECT_MAC_ADDRESS"] = tapjoy.MacAddressOptionOffWithVersionCheck;
+	            
+	            // call connect with flags
+				tapjoy.requestTapjoyConnectWithFlags("13b0ae6a-8516-4405-9dcf-fe4e526486b2", "XHdOwPa8de7p4aseeYP0", flags,
+	                                        function(r){
+	                                        	printResult("Connect: " + r);
+	                                        },
+	                                        function(r){printResult("Connect: " + r)});
+			}
+		}
+		
+        var displayad = document.getElementById("tapjoy-display-ad");
+
+        if(device.platform == "Android"){
+	        displayad.onclick = function() {
+	        	tapjoy.getDisplayAd(function(r){printResult("Get Display Ad: " + r)}, function(r){printResult("Get Display Ad: " + r)});
+	        }
+        }
+        else{ // iOS should call showDisplayAd after successful get
+	        displayad.onclick = function() {
+	            tapjoy.getDisplayAd(
+	                    // On success, show the display ad
+	                    function(r){
+	                    printResult("Get Display Ad: " + r);
+	                    tapjoy.showDisplayAd(
+	                                            function(r){printResult("Show Display Ad: " + r)},
+	                                            function(r){printResult("Show Display Ad: " + r)});
+	                    },
+	                    function(r){printResult("Get Display Ad: " + r)});
+	        }
+	    }
+        
+		var offers = document.getElementById("tapjoy-offers");
+		offers.onclick = function() {
+			tapjoy.showOffers(function(r){printResult("Show Offers: " + r)}, function(r){printResult("Show Offers: " + r)});
+		}
+		
+		var gettappoints = document.getElementById("tapjoy-get-tap-points");
+		gettappoints.onclick = function() {
+			tapjoy.getTapPoints(function(r){printResult("Get Tap Points: " + r)}, function(r){printResult("Get Tap Points: " + r)});
+		}
+		
+		var spendtappoints = document.getElementById("tapjoy-spend-tap-points");
+		spendtappoints.onclick = function() {
+			tapjoy.spendTapPoints(10, function(r){printResult("Spend Tap Points: " + r)}, function(r){printResult("Spend Tap Points: " + r)});
+		}
+		
+		var awardtappoints = document.getElementById("tapjoy-award-tap-points");
+		awardtappoints.onclick = function() {
+			tapjoy.awardTapPoints(10, function(r){printResult("Award Tap Points: " + r)}, function(r){printResult("Award Tap Points: " + r)});
+		}
+		
+		var fullscreenad = document.getElementById("tapjoy-fullscreen-ad");
+		fullscreenad.onclick = function() {
+				tapjoy.getFullScreenAd(
+					// On success, show the full screen ad.
+					function(r){
+						printResult("Get Full Screen Ad: " + r);
+						tapjoy.showFullScreenAd(
+								function(r){printResult("Show Full Screen Ad: " + r)}, 
+								function(r){printResult("Show Full Screen Ad: " + r)});
+						}, 
+					function(r){printResult("Get Full Screen Ad: " + r)});
+		}
+		
+		var element = document.getElementById('deviceProperties');
+		
+		element.innerHTML = 'Device Name: '     + device.name     + '<br />' + 
+							'Device PhoneGap: ' + device.cordova  + '<br />' + 
+							'Device Platform: ' + device.platform + '<br />' + 
+							'Device Version: '  + device.version  + '<br />';
+	 }, true);
+	 
+ 
+	function printResult(text){
+			document.getElementById("result").innerHTML = text;
+	}
+
+</script>
+</head>
+	<body>
+        <div style="display:block; position:absolute;top:90px">
+            <hr>
+		Tapjoy Sample App for Phonegap
+
+        
+		<p id="deviceProperties">Loading device properties...</p>
+		<hr>
+		<input id="tapjoy-connect" type="button"
+			value="Tapjoy Connect" />
+		<br>
+		Call Tapjoy Connect first.
+		<hr>
+		<input id="tapjoy-offers" type="button"
+		value="Offer Wall" />
+        <input id="tapjoy-display-ad" type="button"
+        value="Get Display Ad" />
+        <hr>
+        
+        <input id="tapjoy-get-tap-points" type="button"
+        value="Get Tap Points" />
+        <input id="tapjoy-spend-tap-points" type="button"
+        value="Spend Tap Points" />
+        <input id="tapjoy-award-tap-points" type="button"
+        value="Award Tap Points" />
+        <hr>
+        
+		<input id="tapjoy-fullscreen-ad" type="button"
+		value="Full Screen Ad" />
+        <hr>
+        
+		<div id="result"></div>
+		</div>
+		
+	</body>
+
+</html>
