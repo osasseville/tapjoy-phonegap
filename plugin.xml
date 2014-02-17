@@ -25,10 +25,6 @@
         <source-file src="libs/android/tapjoyconnectlibrary.jar"
                      target-dir="libs"/>
 
-        <config-file target=".classpath" parent="/classpath">
-            <classpathentry exported="true" kind="lib" path="libs/tapjoyconnectlibrary.jar"/>
-        </config-file>
-
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="TapjoyPlugin">
                 <param name="android-package" value="org.apache.cordova.plugin.TapjoyPlugin"/>
