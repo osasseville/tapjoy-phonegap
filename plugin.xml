@@ -4,6 +4,11 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         id="org.apache.cordova.plugin.TapjoyPlugin"
         version="0.2.1">
+    <name>Tapjoy - phonegap</name>
+    <description>
+
+    </description>
+
     <engines>
         <engine name="cordova" version=">=3.0.0"/>
     </engines>
@@ -17,7 +22,7 @@
         <source-file src="src/android/org/apache/cordova/plugin/TapjoyPlugin.java"
                      target-dir="src/org/apache/cordova/plugin"/>
         <source-file src="libs/android/tapjoyconnectlibrary.jar"
-                     target-dir="libs/android/tapjoyconnectlibrary.jar"/>
+                     target-dir="libs/tapjoyconnectlibrary.jar"/>
 
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="TapjoyPlugin">
