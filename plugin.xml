@@ -37,11 +37,11 @@
             <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
             <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
 
-            <uses-sdk android:minSdkVersion="13" android:targetSdkVersion="17" />
+            <uses-sdk android:minSdkVersion="13" android:targetSdkVersion="18" />
         </config-file>
 
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
-            <activity android:configChanges="orientation|keyboardHidden|screenSize"
+            <activity android:configChanges="keyboardHidden|orientation|screenSize"
                       android:name="com.tapjoy.TJCOffersWebView"/>
             <activity android:configChanges="orientation|keyboardHidden|screenSize"
                       android:name="com.tapjoy.TapjoyFullScreenAdWebView"/>
