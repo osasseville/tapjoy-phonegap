@@ -10,7 +10,7 @@
     </description>
 
     <engines>
-        <engine name="cordova" version=">=3.0.0" platform="android" />
+        <engine name="cordova" version=">=3.0.0" platform="android"/>
     </engines>
 
     <js-module src="www/tapjoy.js" name="Tapjoy">
@@ -40,28 +40,21 @@
 
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
             <activity
-                    android:name="com.tapjoy.TJCOffersWebView"
-                    android:configChanges="orientation|keyboardHidden|screenSize" />
+                    android:name="com.tapjoy.TJCOffersWebView"/>
             <activity
-                    android:name="com.tapjoy.TapjoyFullScreenAdWebView"
-                    android:configChanges="orientation|keyboardHidden|screenSize" />
+                    android:name="com.tapjoy.TapjoyFullScreenAdWebView"/>
             <activity
-                    android:name="com.tapjoy.TapjoyDailyRewardAdWebView"
-                    android:configChanges="orientation|keyboardHidden|screenSize" />
+                    android:name="com.tapjoy.TapjoyDailyRewardAdWebView"/>
             <activity
-                    android:name="com.tapjoy.TapjoyVideoView"
-                    android:configChanges="orientation|keyboardHidden|screenSize" />
+                    android:name="com.tapjoy.TapjoyVideoView"/>
             <activity
                     android:name="com.tapjoy.TJAdUnitView"
-                    android:configChanges="orientation|keyboardHidden|screenSize"
                     android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"
-                    android:hardwareAccelerated="true" />
+                    android:hardwareAccelerated="true"/>
             <activity
-                    android:name="com.tapjoy.mraid.view.ActionHandler"
-                    android:configChanges="orientation|keyboardHidden|screenSize" />
+                    android:name="com.tapjoy.mraid.view.ActionHandler"/>
             <activity
-                    android:name="com.tapjoy.mraid.view.Browser"
-                    android:configChanges="orientation|keyboardHidden|screenSize" />
+                    android:name="com.tapjoy.mraid.view.Browser"/>
         </config-file>
 
     </platform>
